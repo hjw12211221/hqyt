@@ -1,0 +1,102 @@
+<template lang='jade'>
+#consultHeader.fixed.top0.left0.right0.bg-white
+  router-link.search.flex.align-center(to="/searchAll")
+    .flex-max.relative.mx3
+        img.absolute.search-icon(src='../assets/images/search.png')
+        input.w10.inputStyle(type='text' placeholder='搜索医生、医馆、疾病、视频',readonly="readonly")
+  .bg.py1
+  .flex.header.align-center.bg-white.handle-border-bottom
+    .item.w25.text-center(@click="selec(0)")
+      span.wordColor.mr1.c9(:class="seleNum==0?'primary':''") 选择地区
+      i.primary(class="icon iconfont icon-sanjiaoxing-down" v-if="seleNum==0&&isMask==false")
+      i.primary(class="icon iconfont icon-sanjiaoxing-up" v-if="seleNum==0&&isMask==true")
+      i.db(class="icon iconfont icon-sanjiaoxing-down" v-if="seleNum!=0")
+      //- i.primary(class="icon iconfont icon-sanjiaoxing-up")
+    .item.w25.text-center.wordColor(@click="selec(1)",:class="seleNum==1?'primary':''") 咨询最多
+    .item.w25.text-center.wordColor(@click="selec(2)",:class="seleNum==2?'primary':''") 评价最好
+    .item.w25.text-center.wordColor(@click="selec(3)",:class="seleNum==3?'primary':''") 价格最优
+  .mask(v-show="isMask",@click="isMask=false")
+    transition(name="fade")
+      .are.bg-white(v-show="isMask")
+        .item.handle-border-bottom(v-for="x in areList",:class="x.name==areName?'primary':'c3'") {{x.name}}
+</template>
+<script>
+export default {
+  data () {
+    return {
+      seleNum: 0,
+      isMask:false,
+      areName:'',
+      areList:[
+        {name: '彭埠馆'},
+        {name: '银泰馆'},
+        {name: '庆春馆'},
+        {name: '彭埠馆'},
+        {name: '银泰馆'},
+        {name: '庆春馆'},
+        {name: '彭埠馆'},
+        {name: '银泰馆'},
+        {name: '庆春馆'}
+      ],
+    }
+  },
+  components: {
+
+  },
+  methods: {
+    selec (num) {
+      if (num == 0) {
+        if (this.isMask && this.seleNum == num){
+          this.isMask = false
+        }else{
+          this.isMask = true
+        }
+      }else {
+        this.isMask = false
+      }
+       this.seleNum = num
+    }
+  }
+}
+</script>
+
+<style lang="stylus" scoped>
+.search
+  height 50px
+  line-height 50px
+  background #fff
+ .inputStyle
+    height 25px
+    line-height 25px
+    background rgba(229, 229, 229, 0.8)
+    padding-left 35px
+    color #333
+    font-size 16px
+.inputStyle::-webkit-input-placeholder
+  font-size 14px
+  color #ccc
+.search-icon
+  top 50%
+  left 8px
+  margin-top -8px
+#consultHeader
+  z-index 10
+  height 50px
+  line-height 50px
+  border-bottom 1px solid #e5e5e5
+  .mask
+    margin-top 110px
+    z-index 1001
+  .are
+    max-height 50%
+    overflow auto
+    .item
+      padding-left 30px
+  .db
+    color #D8D8D8
+  .header
+    .item
+      @media screen and (max-width: 320px){
+        font-size 14px
+			}
+</style>

@@ -1,0 +1,83 @@
+<template lang='jade'>
+#searchHome
+  .search.flex.align-center.bg-white
+    .flex-max.relative.mx3
+      img.absolute.search-icon(src='../assets/images/search.png')
+      input.w10.inputStyle(type='text' placeholder='搜索医生、医馆、疾病、视频')
+    //- input.w10.mx3.inden10(autofocus="autofocus",v-if="show")
+    //- .mx3.box.flex.justify-center.align-center.w10(@click="isInput",v-if="!show")
+    //-   img.mr2(src='../assets/images/search.png')
+    //-   .c9.f14 搜索医生、科室
+  .infomation.bg.f12.text-center.py2.b5 将根据以下症状推荐医生
+  .list.px3.bottom_bg(v-for="x in list")
+    .title.py3 {{x.name}}
+    .flex.wrap
+      .px1.mr3.mb3.tab.c9.f14(v-for="j in x.item" @click="jump") {{j}}
+</template>
+<script>
+export default {
+  data () {
+    return {
+      show: false,
+      list:[
+        {name:'中医内科',item:['胃肠道疾病','心脑血管','高血压','糖尿病','失眠','肝胆疾病','支气管炎']},
+        {name:'小儿内科',item:['咳嗽','气管炎','过敏性鼻炎','鼻窦炎','扁桃体炎','哮喘','厌食','遗尿','湿疹']},
+        {name:'中妇科',item:['月经失调','白带异常','不孕不育','子宫出血病','子宫内膜异位']}
+      ]
+    }
+  },
+  components: {
+  },
+  methods:{
+    isInput () {
+      this.show = true
+    },
+    jump () {
+      this.$router.push('/seleDoc')
+    }
+  }
+}
+</script>
+<style lang="stylus" scoped>
+#searchHome
+  .b5
+    color #B5B3B3
+  .search
+    position fixed
+    top 0
+    left 0
+    right 0
+    height 50px
+    line-height 50px
+    .inputStyle
+      height 25px
+      line-height 25px
+      background rgba(229, 229, 229, 0.8)
+      padding-left 35px
+      color #333
+      font-size 16px
+    .inputStyle::-webkit-input-placeholder
+      font-size 14px
+      color #ccc
+    .search-icon
+      top 50%
+      left 8px
+      margin-top -8px
+  .infomation
+    margin-top 50px
+  .list
+    .title
+      position relative
+      text-indent 10px
+      &:before
+        content ''
+        display inline-block
+        position absolute
+        left 0px
+        top 16px
+        width 4px
+        height 18px
+        background #8B1616
+    .tab
+      border 1px solid #DAC9A6
+</style>

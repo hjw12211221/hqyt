@@ -1,0 +1,74 @@
+// 环境名称
+const ENV_NAME = 'ddys_conf'
+
+// API默认配置
+export const API_DEFAULT_CONFIG = {
+	// mockBaseURL: '',
+	// mock: true,
+	// debug: false,
+	sep: '/'
+}
+
+// axios 默认配置
+export const AXIOS_DEFAULT_CONFIG = {
+	responseType: 'json'
+}
+
+export const CONSOLE_REQUEST_ENABLE = false // 开启请求参数打印
+export const CONSOLE_RESPONSE_ENABLE = false // 开启响应参数打印
+
+// 环境配置
+export const ENV_CONFIG = {
+	// 发布版本
+	ddys_conf: {
+		name: 'ddys_',
+		wxid: 'wxb0fff55e9352f5f5',
+		AppID: 'wx350294e57d85e10d',
+		HOST: 'https://ddys-book.diandianys.com/app',
+		baseApi: 'https://ddys-base.diandianys.com/app',
+		loginURL: 'https://ddys-wechat.diandianys.com/login/#/logIn?callback='
+	},
+	// 预发布版本
+	ddhy_conf: {
+		name: 'ddhy_',
+		wxid: 'wxe143c7c832718250',
+		AppID: 'wx33b1da8486ed4cd2',
+		HOST: 'http://yyddysws.hztywl.cn/app',
+		baseApi: 'http://test-ddys-base.hztywl.cn/app',
+		loginURL: 'https://ddys-wechat.diandianys.com/ddhyLogin/#/logIn?callback='
+	},
+	// 测试版本
+	ddysTest_conf: {
+		name: 'ddysTest_',
+		wxid: 'wxe274576d295e0050',
+		AppID: 'wx33b1da8486ed4cd2',
+		HOST: 'http://hqyt-book.hztywl.cn/api',
+		baseApi: 'http://test-ddys-base.hztywl.cn/app',
+		loginURL: 'http://test-ddys-wechat.hztywl.cn/loginTest/#/logIn?callback='
+	}
+}[ENV_NAME]
+
+// 微信模拟配置信息
+export const WECHAT_MOCK_CONFIG = {
+	'createTime': 1490327245417,
+	'openid': 'o7ZJjv95-qwVSpKeJ5OewBS_L3cM',
+	'userAreaname': '中国 湖北 潜江',
+	'userAvatar': 'http://wx.qlogo.cn/mmopen/o8hX2eDaLnSLx780DXgj1s71HOWPtdMEhExtA5NtHZBEXorQ3pa7OhR1NY9OmW3KL7G1Z4kW8QOf0ySyZG8qHHNIYX1tXfYP/0',
+	'userId': 15,
+	'userNickname': '请勿打扰',
+	'userSex': '1'
+}
+
+export const ROUTER_DEFAULT_CONFIG = {
+	// mode: 'history'
+}
+
+// 所有请求的公共请求参数
+export const AJAX_BASE_CONFIG = {
+	random: '1234',
+	spid: '1001',
+	channel: '23',
+	format: 'JSON',
+	oper: '127.0.0.1',
+	sign: '3f52f63fad63c5dd209d28420977fb5d'
+}

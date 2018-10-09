@@ -1,0 +1,116 @@
+<template lang='jade'>
+.doc-home
+	tab.px3.fixed.w10.top0(active-color='#8B1616'  custom-bar-width="40px" v-model="index")
+		tab-item.text-center.f3(v-for="(x, index) in docTabs" 
+													:key="index"
+													@on-item-click='itemClick'
+													:selected="index===selectIndex") {{x}}
+	.container
+		.swiper-item
+			.tab-swiper.vux-center(v-show='selectIndex == 0')
+				.home-content(style='paddingRight:2px;')
+					.doc-logo.pt4
+						.doc-info.pl4.flex.mb2.pl3
+							.doc-icon
+							.doc-name.flex-max.white
+								.flex.align-center.mb1
+									.name.mr3 华佗
+									.add.f12.px1
+										i(class="icon iconfont icon-jia")
+										|	关注
+								.doc-address.f14 胡庆余堂【彭埠馆】
+							router-link.doc-click(to="/docInfo")
+								img(src='../../assets/images/doc_info.png')
+						.doc-tag.pl4.pb3.pl3.f12
+							.inline-block.mr2.mb1.tag-item.white 月经不调
+							.inline-block.mr2.mb1.tag-item.white 月经不调月经
+						.doc-fans.pr3.pl3.pb3
+							.flex.justify-between.px4
+								router-link.doc-article-num.text-center.white(to="/docArtical")
+									.mt2 1
+									.mt1.f14 医生文章
+								.doc-article-num.text-center.white
+									.mt2 1
+									.mt1.f14 患者评价
+								.doc-article-num.text-center.white
+									.mt2 1
+									.mt1.f14 看诊人数
+					server-list(title='门诊服务' @show="showOrder" )
+					server-list(title='网络服务')
+					//- pacakge(title='明星套餐')
+					//- pacakge(title='调理方案')
+			.tab-swiper.vux-center(v-show='selectIndex == 1')
+				.px3
+					play-live
+			.tab-swiper.vux-center(v-show='selectIndex == 2')
+				.px3
+					doc-info
+	Bottom-mask(:show="mask", @hiden="hidden")
+</template>
+<script>
+import { Tab, TabItem, Swiper, SwiperItem } from 'vux'
+import ServerList from './ServerList'
+import Pacakge from './Package'
+export default {
+	data () {
+		return {
+			selectIndex: 0,
+			index: 0,
+			docTabs: ['医生主页', '课程直播', '名医讲堂'],
+			docHomeHeight: '736px',
+			mask: false
+		}
+	},
+	components: {
+		Tab,
+		TabItem,
+		Swiper,
+		SwiperItem,
+		ServerList,
+		Pacakge
+	},
+	methods: {
+		itemClick (index) {
+			this.selectIndex = index
+		},
+		showOrder (val) {
+			this.mask = val
+		},
+		hidden (val) {
+			this.mask = val
+		}
+	},
+	mounted () {
+		this.docHomeHeight = document.getElementsByClassName('tab-swiper')[0].clientHeight + 'px'
+	}
+}
+</script>
+
+<style lang="stylus" scoped>
+.container
+	margin-top 54px
+.doc-logo
+	background-image  url('../../assets/images/doc_home.png')
+	background-size cover
+	.doc-icon
+		width 54px
+		height 54px
+		background-color red
+		margin-right 17px
+	.doc-name
+		.name
+			font-size 20px
+		.add
+			border 1px solid #E9C528
+			border-radius 3px
+			color #E9C528
+	.doc-click
+		margin-top 11px
+	.tag-item
+		background-image  url('../../assets/images/border.png')
+		padding 2px 6px
+		background-size 100% 100%
+		background-repeat no-repeat
+	.doc-fans
+		border-top 1px solid #fff
+</style>

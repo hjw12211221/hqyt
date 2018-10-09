@@ -1,0 +1,131 @@
+<template lang='jade'>
+#lookDoc
+  .main.px3
+    .flex.py2.align-center.handle-border-bottom(@click="jump",v-for="x in 3")
+      .pic.mr2
+        img.circle(src="../assets/images/tou.png")
+      .flex-max.omit
+        .info.flex.align-center
+          .flex-max.omit
+            span.name.f16.mr2 黄丽华
+            span.kept.mr2 妇产科专业
+            span.post.mr2 主治医生
+          img(src="../assets/images/order.png" v-if="name=='today'" ,@click.stop="show")
+          .f14.primary(v-if="name=='consultDoc'") 18元
+        .my2.flex.align-center
+          i.mr1.f14(v-for="(x,index) in 5",class="icon iconfont icon-yduixingxingshixin",:style="{color:index<4 ? '#edcc89' : '#ccc'}" v-if="name!='colleDoc'")
+          .c6.f12(v-if="name=='consultDoc'") 咨询量：999
+          .c6.f12(v-else) 预约量：8888
+        .tabList.flex.wrap
+          .tag-item 月经不调
+          .tag-item 痛经
+          .tag-item 乳腺增生
+          .tag-item 子宫肌瘤
+    .flex.py2.align-center.handle-border-bottom(v-for="x in 3")
+      .pic.mr2
+        img.circle(src="../assets/images/tou.png")
+      .flex-max.omit
+        .info.flex.align-center
+          .flex-max.omit
+            span.name.f16.mr2 黄丽华
+            span.kept.mr2 妇产科专业
+            span.post.mr2 主治医生
+          img(src="../assets/images/man.png" v-if="name=='today'")
+          .f14.primary(v-if="name=='consultDoc'") 18元
+        .my2.flex.align-center
+          i.mr1.f14(v-for="(x,index) in 5",class="icon iconfont icon-yduixingxingshixin",:style="{color:index<4 ? '#edcc89' : '#ccc'}" v-if="name!='colleDoc'")
+          .c6.f12(v-if="name=='consultDoc'") 咨询量：999
+          .c6.f12(v-else) 预约量：8888
+        .tabList.flex.wrap
+          .tag-item 月经不调
+          .tag-item 痛经
+          .tag-item 乳腺增生
+          .tag-item 子宫肌瘤
+    .flex.py2.align-center.handle-border-bottom
+      .pic.mr2
+        img.circle(src="../assets/images/tou.png")
+      .flex-max.omit
+        .info.flex.align-center
+          .flex-max.omit
+            span.name.f16.mr2 黄丽华
+            span.kept.mr2 妇产科专业
+            span.post.mr2 主治医生
+          img(src="../assets/images/stop.png" v-if="name=='today'")
+          .f14.primary(v-if="name=='consultDoc'") 18元
+        .my2.flex.align-center
+          i.mr1.f14(v-for="(x,index) in 5",class="icon iconfont icon-yduixingxingshixin",:style="{color:index<4 ? '#edcc89' : '#ccc'}" v-if="name!='colleDoc'")
+          .c6.f12(v-if="name=='consultDoc'") 咨询量：999
+          .c6.f12(v-else) 预约量：8888
+        .tabList.flex.wrap
+          .tag-item 月经不调
+          .tag-item 痛经
+          .tag-item 乳腺增生
+          .tag-item 子宫肌瘤
+</template>
+<script>
+import Search from '@/components/Search.vue'
+export default {
+  props:{
+    name: ''
+  },
+  data () {
+    return {
+    }
+  },
+  components: {
+    Search
+  },
+  methods: {
+    show () {
+      this.$emit('showInfo',true)
+    },
+    jump () {
+      this.$router.push('/doc-home')
+    }
+  }
+}
+</script>
+
+<style lang="stylus" scoped>
+#lookDoc
+  .icon
+    padding-bottom 5px
+  .pic
+    img
+      width 60px
+      height 60px
+      @media screen and (max-width: 320px){
+        width 45px
+        height 45px
+      }
+  .info
+    .name
+      font-size 16px
+      color #262323
+    .kept
+      color #262323
+      font-size 14px
+      @media screen and (max-width: 320px){
+        font-size 12px  
+      }
+    .post
+      color #262323
+      font-size 14px
+      @media screen and (max-width: 320px){
+        font-size 12px  
+      }
+    img
+      width 50px
+  .tabList
+    height 22px
+    overflow hidden
+    .tag-item
+      margin-right 10px
+      // margin-bottom 10px
+      background-image url('../assets/images/border.png')
+      padding 2px 6px
+      background-size 100% 100%
+      background-repeat no-repeat
+      font-size 12px
+      color #952A2A
+</style>

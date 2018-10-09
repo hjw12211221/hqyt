@@ -1,0 +1,45 @@
+<template lang="jade">
+.flex.py2
+	router-link.mr3.user-icon(to="/myHome")
+		img(src='../assets/images/user.png')
+	router-link.flex-max.relative(to="/searchHome")
+		img.absolute.search-icon(src='../assets/images/search.png')
+		input.w10.inputStyle.py1(type='text' placeholder='搜索医生、医馆、疾病、视频' readonly="readonly")
+	router-link.ml3.pt1.relative(to="/myNews")
+		img(src='../assets/images/new.png')
+		.rot.absolute
+</template>
+<script>
+export default {
+	components: {
+	},
+	data () {
+		return {
+		}
+	},
+	mounted () {
+		
+	}
+}
+</script>
+<style lang="stylus" scoped>
+.inputStyle
+	background rgba(229, 229, 229, 0.8)
+	padding-left 35px
+	color #ccc
+	&::-webkit-input-placeholder
+		color #ccc
+.user-icon
+	padding-top 3px
+.search-icon
+	top 50%
+	left 8px
+	margin-top -8px
+.rot
+	width 8px
+	height 8px
+	background red
+	border-radius 50%
+	right -3px
+	top 0
+</style>

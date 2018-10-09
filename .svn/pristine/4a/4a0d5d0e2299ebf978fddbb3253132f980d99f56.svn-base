@@ -1,0 +1,26 @@
+<template lang='jade'>
+#consultDoc
+  Consult-header
+  Doc-list(name="consultDoc")
+  router-link.bar.fixed(to="/priceConsult")
+    img(src="../assets/images/bar.png")
+</template>
+<script>
+export default {
+  data () {
+    return {
+
+    }
+  },
+  components: {
+  }
+}
+</script>
+
+<style lang="stylus" scoped>
+.bar
+  bottom 20%
+  right 20px
+  img
+    width 50px
+</style>

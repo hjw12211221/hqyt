@@ -1,0 +1,57 @@
+// 重置浏览器行为
+html
+  color #333
+  background #fff
+  font-family "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-size 15px
+body,div,h1,h2,h3,h4,h5,h6,p,ul,li,button,textarea,input,header
+  margin 0
+  padding 0
+  -webkit-box-sizing border-box
+  -moz-box-sizing border-box
+  box-sizing border-box
+  -webkit-tap-highlight-color transparent
+  outline none
+h1,h2,h3,h4,h5,h6
+  font-weight normal
+  line-height 1
+table
+  border-collapse collapse
+  border-spaceing 0
+img
+  border 0
+a
+  color #333
+  text-decoration none
+p
+  line-height 1.5
+  word-break break-all
+ul, ol, li
+  list-style none
+  
+* {
+  // ios用户点击一个链接，会出现一个半透明灰色遮罩, 如果想要禁用，可设置-webkit-tap-highlight-color的alpha值为0去除灰色半透明遮罩
+  -webkit-tap-highlight-color rgba(0, 0, 0, 0)
+  // 阻止长按图片之后呼出菜单提示复制的行为
+  -webkit-touch-callout none
+  // 禁用Webkit内核浏览器的文字大小调整功能
+  -webkit-text-size-adjust none
+}
+// 美化表单元素
+// 使用 appearance 改变 webkit 浏览器的默认外观
+input, select
+  -webkit-appearance none
+  appearance none
+
+input, select, textarea, button
+  outline none
+  border none
+// -webkit-user-select: none webkit内核浏览器下的一个bug
+// 阻止了用户的选择内容行为，会导致一些“内容可编辑”标签无法正常使用，比如input、testarea
+[contenteditable = "true"], input, textarea
+  -webkit-user-select auto !important
+  -khtml-user-select auto !important
+  -moz-user-select auto !important
+  -ms-user-select auto !important
+  -o-user-select auto !important
+  user-select auto !important

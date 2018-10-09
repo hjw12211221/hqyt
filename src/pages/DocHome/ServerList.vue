@@ -1,0 +1,88 @@
+<template lang='jade'>
+.server
+	.server-title.flex.handle-border-bottom.px3
+		.server-bar.mr2
+		.flex-max.f16.c3 {{title}}
+		//- .instructions.f12.c9
+		//- 	span.pr1 费用说明
+		//- 	icon-svg(iconClass='jiantou')
+	.server-content.px3.mt3.pb3.handle-border-bottom
+		.content.px3.py4.flex(v-if="title=='门诊服务'" @click="order")
+			.server-info.flex-max.omit
+				.server-price.f16
+					span.c3 医馆面诊 &nbsp;| &nbsp;
+					span.price 100元/次
+				.server-address.omit.f12.mt1.c3 周二上午、周四下午
+			.server-click 点击预约
+		.content.px3.py4.flex.my2(v-if="title=='网络服务'")
+			.server-info.flex-max.omit
+				.server-price.f16
+					span.c3 问医生 &nbsp;| &nbsp;
+					span.price 100元/次
+				.server-address.omit.f12.mt1.c3 提供在线图文咨询
+			router-link.server-click(to="/imgConsult") 点击咨询
+		.content.px3.py4.flex(v-if="title=='网络服务'")
+			.server-info.flex-max.omit
+				.server-price.f16
+					span.c3 复诊开方 &nbsp;| &nbsp;
+					span.price 100元/次
+				.server-address.omit.f12.mt1.c3 与医生聊天式沟通（图文模式），开方调理
+			router-link.server-click(to="/chart") 点击复诊
+		//- .content.px3.py4.flex(v-if="title=='网络服务'")
+		//- 	.server-info.flex-max.omit
+		//- 		.server-price.f16
+		//- 			span.c3 在线开方 &nbsp;| &nbsp;
+		//- 			span.price 100元/次
+		//- 		.server-address.omit.f12.mt1.c3 与医生聊天式沟通（图文模式），开方调理
+		//- 	router-link.server-click(to="/") 点击咨询
+</template>
+<script>
+export default {
+	props: {
+		title: {
+			type: String,
+			isRequired: true 
+		}
+	},
+	data () {
+		return {
+
+		}
+	},
+	methods:{
+		order () {
+			this.$emit('show', true)
+		}
+	}
+}
+</script>
+
+<style lang="stylus" scoped>
+.server
+	.server-title
+		padding 17px 0
+	.server-bar
+		width 4px
+		background #8B1616
+		position relative
+		top 1px
+	.instructions
+		line-height 22px
+	.server-content
+		.content
+			background-image  url('../../assets/images/server.png')
+			background-size 100% 100%
+			background-repeat no-repeat
+			.server-info
+				.price
+					color #8D1410
+			.server-click
+				border 1px solid #8D1410
+				width 75px
+				height 25px
+				line-height 25px
+				color #8D1410
+				text-align center
+				margin-top 7px
+ 
+</style>
